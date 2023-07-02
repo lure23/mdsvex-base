@@ -1,0 +1,13 @@
+# Ask your Mac users to set up user-specific ~/.gitignore. Repos should not need OS specific tuning.
+.DS_Store
+/node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+.vercel
+.output
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

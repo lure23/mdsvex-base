@@ -1,0 +1,3 @@
+[submodule "mp-shell.sub"]
+	path = mp-shell.sub
+	url = git@github.com:lure23/MP-shell.git
