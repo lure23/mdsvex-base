@@ -13,8 +13,8 @@ export INSTANCE:=d41d8c
 export PARAMS:=--memory 2G --disk 3G --cpus 2
 	# Hint: use 'multipass info <instance>' to tune these
 
+# Note: This is used only in this Makefile; 'mp-shell' is not affected.
 _MP_WORK:=work
-	# tbd. Consider mapping it only here (not in the sub)
 
 _SUB_PATH=mp-shell.sub
 
@@ -23,10 +23,13 @@ all:
 
 prep: _mp-image
 
+launch:
+	multipass exec $(INSTANCE) -d $(_MP_WORK) -- sh -c 'npm run dev'
+
 # Note: You can do any number of such targets - or 'make shell' and run development from there.
 #
 build: _mp-image
-	multipass exec $(INSTANCE) -d $(WORK) -- sh -c 'pwd && npm run build'
+	multipass exec $(INSTANCE) -d $(_MP_WORK) -- sh -c 'pwd && npm run build'
 
 # Checks that a) 'multipass' exists as a command, b) downloads the Ubuntu image we use, c) sets up Node & npm environment,
 # 	d) mounts this folder to '/home/ubuntu/work' in the target.
@@ -40,9 +43,7 @@ _mp-image:
 	multipass stop $(INSTANCE)
 	multipass mount --type native . $(INSTANCE):/home/ubuntu/$(_MP_WORK)
 	multipass start $(INSTANCE)
-
-_TMP_mount:
-	multipass mount --type native . $(INSTANCE):/home/ubuntu/$(_MP_WORK)
+	# tbd. Needs to be made so that '_mp-image' can be called multiple times.
 
 # Manual: shell
 shell: _mp-image

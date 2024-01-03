@@ -1,32 +1,35 @@
 # `mdsvex-base`
 
+>*This repo has been created using `npm create svelte@latest`. If you have any problems, create a new one and pick-and-place files from here to it.*
+
+
 ## Purpose
 
-By forking this repo, you can:
+Doing Svelte + Markdown <sub>[mdsvex](https://mdsvex.pngwn.io)</sub> development, in a sandbox <sub>[Multipass](https://multipass.run)</sub>.
 
-- get a Markdown-powered SvelteKit project up and running
-- do development within a sandbox, not exposing your development machine
+By forking this repo, you have:
 
->The author found that while setting up a SvelteKit repo is really easy, decorating it with the right set of ESLint etc. (with mdsvex involved) is not trivial.
->
->There are repos for this means, but they seem to run late in SvelteKit versions, so weren't instantly usable.
+- a Markdown-powered SvelteKit project up and running
+- ..with development done in a sandbox, not exposing your developer account
+
+The author found that while setting up a SvelteKit repo is really easy, decorating it with the right set of ESLint etc. (with mdsvex involved) is not trivial. Repos trying to help with this were not updated to Svelte 4.
 
 
-## Folder layout
+
+## File system layout
 
 ```
 mp-shell.sub/     A git submodule (separate repo) containing the sandbox tooling
-DEVS/             Notes that may be useful in development
 ```
 
 
 ## Requirements
 
-- [Multipass](https://multipass.run)
+- [Multipass](https://multipass.run) >= 1.12.0
 
-   See [mp-shell](https://github.com/lure23/MP-shell) for more info.
+   >See [mp-shell](https://github.com/lure23/MP-shell) for more info.
 
-- GNU `make`
+- GNU `make` natively installed
 
 <font size=-3>
 Developed on:
@@ -34,7 +37,7 @@ Developed on:
 - Multipass 1.12.0
 </font>
 
->Note: For Windows, a Pro/Enterprise license is preferred for Multipass. For Home license, one needs to also install VirtualPC, which dilutes the whole approach a bit.
+>Note: For Windows, a Pro/Enterprise license is preferred. Multipass requires install of VirtualPC on Home licenses, which dilutes the virtualization approach a bit.
 
 
 ## Steps
@@ -43,14 +46,21 @@ Developed on:
 $ git submodule init
 ```
 
-This ties the `mp-shell.sub` folder to a repo.
+Ties the `mp-shell.sub` folder to a repo.
 
 
 ```
-$ make setup
+$ make prep
 ```
 
 ```
 $ make launch
 ```
 
+```
+$ make build
+```
+
+## References
+
+- [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte)
